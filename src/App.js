@@ -131,7 +131,16 @@ function App() {
         </div>
       </div>
     </ThemeProvider>
+    
   );
 }
 
 export default App;
+<a href="/sid.jpg" target="_blank" rel="noopener noreferrer">
+  <img
+    src="/sid.jpg"
+    alt="Siddu B R"
+    className="avatar"
+    style={{ width: 56, height: 56, borderRadius: '50%' }}
+  />
+</a>
