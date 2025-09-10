@@ -261,9 +261,18 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                       allowFullScreen=""
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="Location Map - Tumkur, Karnataka"
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.123456789!2d77.1016!3d13.3409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfcce25ec27c4!2sTumkur%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                      title="Benchagere, Gubbi Taluk, Tumkur, Karnataka"
+                      src="https://www.google.com/maps?q=Benchagere,+Gubbi+Taluk,+Tumkur,+Karnataka&output=embed"
                     />
+                    <Box sx={{ p: 1, textAlign: 'right', bgcolor: 'background.paper' }}>
+                      <Button
+                        size="small"
+                        variant="text"
+                        onClick={() => window.open('https://www.google.com/maps?q=Benchagere,+Gubbi+Taluk,+Tumkur,+Karnataka', '_blank', 'noopener,noreferrer')}
+                      >
+                        Open in Google Maps
+                      </Button>
+                    </Box>
                   </Box>
                 </Stack>
               </CardContent>

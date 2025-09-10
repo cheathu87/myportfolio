@@ -18,14 +18,14 @@ function App() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  // Custom theme colors (dark, light-black surfaces)
+  // Custom theme colors (dark mode, light black surfaces)
   const appTheme = React.useMemo(() => createTheme({
     palette: {
       mode: 'dark',
       primary: { main: '#9c27b0' },
       secondary: { main: '#ff9800' },
-      background: { default: '#121212', paper: '#1e1e1e' },
-      text: { primary: '#ffffff', secondary: 'rgba(255,255,255,0.7)' }
+      background: { default: '#1a1a1a', paper: '#1e1e1e' },
+      text: { primary: '#ffffff', secondary: 'rgba(255,255,255,0.72)' }
     },
     typography: {
       fontFamily: 'Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
@@ -83,25 +83,25 @@ function App() {
               '&:hover': { background: 'transparent' }
             }}
           >
-            <MenuIcon sx={{ color: '#ffffff', filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.7))' }} />
+            <MenuIcon sx={{ color: '#ffffff' }} />
           </IconButton>
         )}
 
         <Drawer
           onSelect={(id) => scrollToSection(id)}
           activeSection={activeSection}
-          profile={{ name: 'Siddu B R', role: 'Frontend Developer', avatarUrl: '/sid.jpg' }}
+          profile={{ name: 'Siddu B R', role: 'Frontend Developer', avatarUrl: '/ddi.jpg' }}
           width={320}
           mobileOpen={mobileOpen}
           onClose={handleDrawerToggle}
           isMobile={isMobile}
+          anchor="top"
         />
         
         <div style={{ 
-          flex: 1, 
-          marginLeft: mobileOpen ? 320 : 0,
-          transition: 'margin-left 0.3s ease-in-out',
-          paddingTop: 80
+          flex: 1,
+          marginTop: 72,
+          transition: 'margin 0.3s ease-in-out'
         }}>
           <div data-section="home">
             <Home />

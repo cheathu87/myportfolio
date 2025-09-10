@@ -34,15 +34,17 @@ export default function MobileLanding() {
         <Card sx={{ mb: 3, borderRadius: 3, boxShadow: 2 }}>
           <CardContent sx={{ textAlign: 'center', py: 4 }}>
             <Avatar
-              src="/sid.jpg"
+              src="/ddi.jpg"
               alt="Siddu B R"
+              imgProps={{ loading: 'eager', decoding: 'async' }}
               sx={{ 
-                width: 120, 
-                height: 120, 
+                width: 180, 
+                height: 180, 
                 mx: 'auto',
                 mb: 3,
-                border: '4px solidrgb(126, 54, 26)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.15)'
+                border: '4px solid rgb(126, 54, 26)',
+                boxShadow: '0 6px 28px rgba(0,0,0,0.18)',
+                objectFit: 'cover'
               }}
             />
             <Typography variant="h4" sx={{ fontWeight: 800, color: '#1a237e', mb: 1 }}>

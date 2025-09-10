@@ -28,10 +28,11 @@ export default function Drawer({
   mobileOpen = false,
   onClose,
   isMobile = false,
+  anchor = 'left',
   profile = {
     name: 'Siddu B R',
     role: 'Frontend Developer',
-    avatarUrl: '/sid.jpg',
+    avatarUrl: '/ddi.jpg',
   },
   links = [
     { id: 'home', label: 'Home', icon: <HomeIcon /> },
@@ -46,9 +47,10 @@ export default function Drawer({
   ],
 }) {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const effectiveIsMobile = isMobile || isSmallScreen;
   const firstItemRef = useRef(null);
+  const isTop = anchor === 'top';
 
   const handleSelect = (id) => () => {
     onSelect && onSelect(id);
@@ -74,114 +76,72 @@ export default function Drawer({
 
   return (
     <Box sx={{ 
-      width: effectiveIsMobile ? '100%' : width, 
-      height: '100dvh', 
-      borderRight: effectiveIsMobile ? 0 : 1, 
+      width: anchor === 'top' ? '100%' : (effectiveIsMobile ? '100%' : width), 
+      height: anchor === 'top' ? 'auto' : '100dvh', 
+      borderRight: anchor === 'left' ? (effectiveIsMobile ? 0 : 1) : 0, 
+      borderBottom: anchor === 'top' ? 1 : 0,
       borderColor: 'divider', 
-      bgcolor: 'background.paper',
-      color: 'text.primary',
+      bgcolor: anchor === 'top' ? '#e3f2fd' : 'background.paper',
+      color: anchor === 'top' ? '#0f172a' : 'text.primary',
       position: 'fixed',
       top: 0,
-      left: effectiveIsMobile ? (mobileOpen ? 0 : '-100%') : 0,
+      left: 0,
+      transform: anchor === 'top' 
+        ? (mobileOpen ? 'translateY(0)' : 'translateY(-100%)') 
+        : (mobileOpen ? 'translateX(0)' : 'translateX(-100%)'),
       zIndex: 1200,
-      overflow: 'hidden',
-      transition: 'left 0.3s ease-in-out',
-      boxShadow: effectiveIsMobile ? 3 : 0,
+      overflow: anchor === 'top' ? 'visible' : 'hidden',
+      transition: 'transform 0.3s ease-in-out',
+      boxShadow: 3,
       paddingTop: 'env(safe-area-inset-top)',
       paddingBottom: 'env(safe-area-inset-bottom)'
-    }} aria-label="Primary navigation" aria-expanded={mobileOpen}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-        {/* Header */}
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 2,
-            px: 2,
-            py: 2.5,
-            bgcolor: 'transparent',
-            color: 'text.primary',
-          }}
-        >
+    }} aria-label="Primary navigation" aria-expanded={mobileOpen} aria-hidden={!mobileOpen}>
+      {isTop ? (
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, px: 2, py: 1.5 }}>
           <Avatar
             src={profile.avatarUrl}
             alt={profile.name}
+            imgProps={{ loading: 'eager', decoding: 'async' }}
             sx={{ 
-              width: 56, 
-              height: 56, 
+              width: 64, 
+              height: 64, 
               border: `2px solid ${theme.palette.divider}`,
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
+              objectFit: 'cover'
             }}
           />
-          <Box sx={{ minWidth: 0, flex: 1 }}>
-            <Typography variant="subtitle1" noWrap sx={{ fontWeight: 700 }}>
-              {profile.name}
-            </Typography>
-            <Typography variant="body2" noWrap color="text.secondary">
-              {profile.role}
-            </Typography>
-          </Box>
-          <IconButton
-            onClick={onClose}
-            aria-label="Close drawer"
-            sx={{ color: 'inherit' }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </Box>
-
-        <Divider />
-
-        {/* Navigation */}
-        <Box component="nav" role="navigation" aria-label="Sections" sx={{ flex: 1, overflowY: 'auto' }}>
-          <List sx={{ py: 0 }}>
+          <Typography variant="subtitle1" noWrap sx={{ fontWeight: 700, mr: 1 }}>
+            {profile.name}
+          </Typography>
+          <List sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', py: 0, gap: 0.5 }}>
             {links.map((item, index) => (
-              <ListItem key={item.id} disablePadding>
-                <ListItemButton 
+              <ListItem key={item.id} disablePadding sx={{ width: 'auto' }}>
+                <ListItemButton
                   onClick={handleSelect(item.id)}
                   ref={index === 0 ? firstItemRef : undefined}
                   sx={{
-                    bgcolor: activeSection === item.id ? 'primary.main' : 'transparent',
-                    color: activeSection === item.id ? '#fff' : 'text.primary',
-                    '&:hover': {
-                      bgcolor: activeSection === item.id ? 'primary.dark' : 'action.hover',
-                    },
-                    transition: 'all 0.3s ease',
+                    px: 2,
+                    py: 1,
                     borderRadius: 1,
-                    mx: 1,
-                    mb: 0.5
+                    bgcolor: activeSection === item.id ? 'primary.main' : 'transparent',
+                    color: activeSection === item.id ? '#fff' : '#111827',
+                    '&:hover': { bgcolor: activeSection === item.id ? 'primary.dark' : 'rgba(0,0,0,0.04)' },
+                    transition: 'all 0.2s ease'
                   }}
                 >
                   {item.icon ? (
-                    <ListItemIcon sx={{ 
-                      color: activeSection === item.id ? '#fff' : 'text.secondary' 
-                    }}>
+                    <ListItemIcon sx={{ minWidth: 32, color: activeSection === item.id ? '#fff' : '#475569' }}>
                       {item.icon}
                     </ListItemIcon>
                   ) : null}
                   <ListItemText
                     primary={item.label}
-                    primaryTypographyProps={{ 
-                      sx: { 
-                        color: activeSection === item.id ? '#fff' : 'text.primary', 
-                        fontWeight: activeSection === item.id ? 700 : 500 
-                      } 
-                    }}
+                    primaryTypographyProps={{ sx: { fontWeight: activeSection === item.id ? 700 : 500 } }}
                   />
                 </ListItemButton>
               </ListItem>
             ))}
           </List>
-        </Box>
-
-        <Divider />
-
-        {/* Footer / Socials */}
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 2, py: 1.5 }}>
-          <Typography variant="caption" color="text.secondary">
-            © {new Date().getFullYear()} {profile.name}
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 1 }}>
+          <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center', gap: 1 }}>
             {socials.map((s) => (
               <IconButton
                 key={s.id}
@@ -196,9 +156,122 @@ export default function Drawer({
                 {s.icon}
               </IconButton>
             ))}
+            <IconButton onClick={onClose} aria-label="Close" sx={{ color: 'inherit' }}>
+              <CloseIcon />
+            </IconButton>
           </Box>
         </Box>
-      </Box>
+      ) : (
+        <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          {/* Header */}
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2,
+              px: 2,
+              py: 2.5,
+              bgcolor: 'transparent',
+              color: 'text.primary',
+            }}
+          >
+            <Avatar
+              src={profile.avatarUrl}
+              alt={profile.name}
+              sx={{ 
+                width: 56, 
+                height: 56, 
+                border: `2px solid ${theme.palette.divider}`,
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
+              }}
+            />
+            <Box sx={{ minWidth: 0, flex: 1 }}>
+              <Typography variant="subtitle1" noWrap sx={{ fontWeight: 700 }}>
+                {profile.name}
+              </Typography>
+              <Typography variant="body2" noWrap color="text.secondary">
+                {profile.role}
+              </Typography>
+            </Box>
+            <IconButton
+              onClick={onClose}
+              aria-label="Close drawer"
+              sx={{ color: 'inherit' }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
+
+          <Divider />
+
+          {/* Navigation */}
+          <Box component="nav" role="navigation" aria-label="Sections" sx={{ flex: 1, overflowY: 'auto' }}>
+            <List sx={{ py: 0 }}>
+              {links.map((item, index) => (
+                <ListItem key={item.id} disablePadding>
+                  <ListItemButton 
+                    onClick={handleSelect(item.id)}
+                    ref={index === 0 ? firstItemRef : undefined}
+                    sx={{
+                      bgcolor: activeSection === item.id ? 'primary.main' : 'transparent',
+                      color: activeSection === item.id ? '#fff' : 'text.primary',
+                      '&:hover': {
+                        bgcolor: activeSection === item.id ? 'primary.dark' : 'action.hover',
+                      },
+                      transition: 'all 0.3s ease',
+                      borderRadius: 1,
+                      mx: 1,
+                      mb: 0.5
+                    }}
+                  >
+                    {item.icon ? (
+                      <ListItemIcon sx={{ 
+                        color: activeSection === item.id ? '#fff' : 'text.secondary' 
+                      }}>
+                        {item.icon}
+                      </ListItemIcon>
+                    ) : null}
+                    <ListItemText
+                      primary={item.label}
+                      primaryTypographyProps={{ 
+                        sx: { 
+                          color: activeSection === item.id ? '#fff' : 'text.primary', 
+                          fontWeight: activeSection === item.id ? 700 : 500 
+                        } 
+                      }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+
+          <Divider />
+
+          {/* Footer / Socials */}
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 2, py: 1.5 }}>
+            <Typography variant="caption" color="text.secondary">
+              © {new Date().getFullYear()} {profile.name}
+            </Typography>
+            <Box sx={{ display: 'flex', gap: 1 }}>
+              {socials.map((s) => (
+                <IconButton
+                  key={s.id}
+                  size="small"
+                  color="inherit"
+                  component="a"
+                  href={s.href}
+                  target={s.href?.startsWith('http') ? '_blank' : undefined}
+                  rel={s.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  aria-label={s.id}
+                >
+                  {s.icon}
+                </IconButton>
+              ))}
+            </Box>
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 }
