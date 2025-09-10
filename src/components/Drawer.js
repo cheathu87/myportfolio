@@ -13,6 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import WorkIcon from '@mui/icons-material/Work';
@@ -42,7 +43,7 @@ export default function Drawer({
   ],
   socials = [
     { id: 'github', icon: <GitHubIcon />, href: 'https://github.com/Siddu-119/my-portfolio' },
-    { id: 'linkedin', icon: <LinkedInIcon />, href: 'www.linkedin.com/in/Siddu B R-p-2247aa374' },
+    { id: 'instagram', icon: <InstagramIcon />, href: 'https://instagram.com/your_instagram_username' },
     { id: 'email', icon: <MailOutlineIcon />, href: 'mailto:siddu19112007@gmail.com' },
   ],
 }) {
@@ -173,7 +174,7 @@ export default function Drawer({
           </Box>
         </Box>
       ) : (
-        <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+  <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', position: 'relative' }}>
           {/* Header */}
           <Box
             sx={{
@@ -216,7 +217,7 @@ export default function Drawer({
           <Divider />
 
           {/* Navigation */}
-          <Box component="nav" role="navigation" aria-label="Sections" sx={{ flex: 1, overflowY: 'auto' }}>
+          <Box component="nav" role="navigation" aria-label="Sections" sx={{ flex: 1, overflowY: 'auto', pb: 8 }}>
             <List sx={{ py: 0 }}>
               {links.map((item, index) => (
                 <ListItem key={item.id} disablePadding>
@@ -259,28 +260,45 @@ export default function Drawer({
 
           <Divider />
 
-          {/* Footer / Socials */}
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 2, py: 1.5 }}>
-            <Typography variant="caption" color="text.secondary">
-              © {new Date().getFullYear()} {profile.name}
-            </Typography>
-            <Box sx={{ display: 'flex', gap: 1 }}>
-              {socials.map((s) => (
-                <IconButton
-                  key={s.id}
-                  size="small"
-                  color="inherit"
-                  component="a"
-                  href={s.href}
-                  target={s.href?.startsWith('http') ? '_blank' : undefined}
-                  rel={s.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  aria-label={s.id}
-                >
-                  {s.icon}
-                </IconButton>
-              ))}
+          {/* Footer / Socials row and large X for mobile - always at bottom, only in mobile view */}
+          {effectiveIsMobile && (
+            <Box sx={{
+              position: 'fixed',
+              left: 0,
+              bottom: 0,
+              width: '100vw',
+              bgcolor: 'background.paper',
+              borderTop: 1,
+              borderColor: 'divider',
+              boxShadow: 8,
+              zIndex: 2000,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              py: 2
+            }}>
+              <Box sx={{ display: 'flex', gap: 3, mb: 1 }}>
+                {socials.map((s) => (
+                  <IconButton
+                    key={s.id}
+                    size="large"
+                    color="inherit"
+                    component="a"
+                    href={s.href}
+                    target={s.href?.startsWith('http') ? '_blank' : undefined}
+                    rel={s.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    aria-label={s.id}
+                    sx={{ fontSize: 32 }}
+                  >
+                    {s.icon}
+                  </IconButton>
+                ))}
+              </Box>
+              <IconButton onClick={onClose} aria-label="Close drawer" sx={{ color: 'error.main', bgcolor: 'rgba(0,0,0,0.04)', borderRadius: 2, fontSize: 36, mb: 0.5 }}>
+                <CloseIcon sx={{ fontSize: 36 }} />
+              </IconButton>
             </Box>
-          </Box>
+          )}
         </Box>
       )}
     </Box>
