@@ -101,6 +101,9 @@ function App() {
         <div style={{ 
           flex: 1,
           marginTop: 72,
+          width: '100vw',
+          maxWidth: '100vw',
+          overflowX: 'hidden',
           transition: 'margin 0.3s ease-in-out'
         }}>
           <div data-section="home">
