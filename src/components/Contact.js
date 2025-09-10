@@ -31,6 +31,7 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
     message: '',
     severity: 'success'
   });
+  const [mapType, setMapType] = useState('m'); // m: roadmap, k: satellite, h: hybrid
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -251,28 +252,33 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                     borderRadius: 1,
                     overflow: 'hidden',
                     border: '1px solid #6212cb',
-                    minHeight: 250,
-                    mt: 2
+                    mt: 2,
+                    height: { xs: 240, sm: 320, md: 420 }
                   }}>
                     <iframe
                       width="100%"
                       height="100%"
-                      style={{ border: 0 }}
+                      style={{ border: 0, display: 'block' }}
                       allowFullScreen=""
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                       title="Benchagere, Gubbi Taluk, Tumkur, Karnataka"
-                      src="https://www.google.com/maps?q=Benchagere,+Gubbi+Taluk,+Tumkur,+Karnataka&output=embed"
+                      src={`https://www.google.com/maps?q=Benchagere,+Gubbi+Taluk,+Tumkur,+Karnataka&z=14&t=${mapType}&output=embed`}
                     />
-                    <Box sx={{ p: 1, textAlign: 'right', bgcolor: 'background.paper' }}>
-                      <Button
-                        size="small"
-                        variant="text"
-                        onClick={() => window.open('https://www.google.com/maps?q=Benchagere,+Gubbi+Taluk,+Tumkur,+Karnataka', '_blank', 'noopener,noreferrer')}
-                      >
-                        Open in Google Maps
-                      </Button>
+                  </Box>
+                  <Box sx={{ p: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+                    <Box>
+                      <Button size="small" variant={mapType === 'm' ? 'contained' : 'outlined'} sx={{ mr: 1, mb: { xs: 1, sm: 0 } }} onClick={() => setMapType('m')}>Map</Button>
+                      <Button size="small" variant={mapType === 'k' ? 'contained' : 'outlined'} sx={{ mr: 1, mb: { xs: 1, sm: 0 } }} onClick={() => setMapType('k')}>Satellite</Button>
+                      <Button size="small" variant={mapType === 'h' ? 'contained' : 'outlined'} onClick={() => setMapType('h')}>Hybrid</Button>
                     </Box>
+                    <Button
+                      size="small"
+                      variant="text"
+                      onClick={() => window.open('https://www.google.com/maps?q=Benchagere,+Gubbi+Taluk,+Tumkur,+Karnataka', '_blank', 'noopener,noreferrer')}
+                    >
+                      Open in Google Maps
+                    </Button>
                   </Box>
                 </Stack>
               </CardContent>
