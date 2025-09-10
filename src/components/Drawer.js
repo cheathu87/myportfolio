@@ -97,30 +97,41 @@ export default function Drawer({
       paddingBottom: 'env(safe-area-inset-bottom)'
     }} aria-label="Primary navigation" aria-expanded={mobileOpen} aria-hidden={!mobileOpen}>
       {isTop ? (
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, px: 2, py: 1.5 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 2 }, px: { xs: 1, sm: 2 }, py: { xs: 1, sm: 1.5 } }}>
           <Avatar
             src={profile.avatarUrl}
             alt={profile.name}
             imgProps={{ loading: 'eager', decoding: 'async' }}
             sx={{ 
-              width: 64, 
-              height: 64, 
+              width: { xs: 40, sm: 64 }, 
+              height: { xs: 40, sm: 64 }, 
               border: `2px solid ${theme.palette.divider}`,
               objectFit: 'cover'
             }}
           />
-          <Typography variant="subtitle1" noWrap sx={{ fontWeight: 700, mr: 1 }}>
+          <Typography variant="subtitle1" noWrap sx={{ fontWeight: 700, mr: 1, display: { xs: 'none', sm: 'block' } }}>
             {profile.name}
           </Typography>
-          <List sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', py: 0, gap: 0.5 }}>
+          <List sx={{ 
+            display: 'flex', 
+            flexDirection: 'row', 
+            alignItems: 'center', 
+            py: 0, 
+            gap: { xs: 0.25, sm: 0.5 },
+            flexWrap: 'nowrap',
+            overflowX: 'auto',
+            maxWidth: '100%',
+            '&::-webkit-scrollbar': { display: 'none' },
+            scrollbarWidth: 'none'
+          }}>
             {links.map((item, index) => (
               <ListItem key={item.id} disablePadding sx={{ width: 'auto' }}>
                 <ListItemButton
                   onClick={handleSelect(item.id)}
                   ref={index === 0 ? firstItemRef : undefined}
                   sx={{
-                    px: 2,
-                    py: 1,
+                    px: { xs: 1.25, sm: 2 },
+                    py: { xs: 0.75, sm: 1 },
                     borderRadius: 1,
                     bgcolor: activeSection === item.id ? 'primary.main' : 'transparent',
                     color: activeSection === item.id ? '#fff' : '#111827',
@@ -129,19 +140,19 @@ export default function Drawer({
                   }}
                 >
                   {item.icon ? (
-                    <ListItemIcon sx={{ minWidth: 32, color: activeSection === item.id ? '#fff' : '#475569' }}>
+                    <ListItemIcon sx={{ minWidth: { xs: 28, sm: 32 }, color: activeSection === item.id ? '#fff' : '#475569' }}>
                       {item.icon}
                     </ListItemIcon>
                   ) : null}
                   <ListItemText
                     primary={item.label}
-                    primaryTypographyProps={{ sx: { fontWeight: activeSection === item.id ? 700 : 500 } }}
+                    primaryTypographyProps={{ sx: { fontWeight: activeSection === item.id ? 700 : 500, display: { xs: 'none', sm: 'inline' } } }}
                   />
                 </ListItemButton>
               </ListItem>
             ))}
           </List>
-          <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box sx={{ ml: 'auto', display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
             {socials.map((s) => (
               <IconButton
                 key={s.id}
