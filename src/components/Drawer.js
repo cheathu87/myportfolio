@@ -30,7 +30,7 @@ export default function Drawer({
   profile = {
     name: 'Siddu B R',
     role: 'Frontend Developer',
-    avatarUrl: '',
+    avatarUrl: '/sid.jpg',
   },
   links = [
     { id: 'home', label: 'Home', icon: <HomeIcon /> },
@@ -39,7 +39,7 @@ export default function Drawer({
     { id: 'contact', label: 'Contact', icon: <ContactSupportIcon /> },
   ],
   socials = [
-    { id: 'github', icon: <GitHubIcon />, href: 'https://github.com/Siddu B R497c' },
+    { id: 'github', icon: <GitHubIcon />, href: 'https://github.com/Siddu-119/my-portfolio' },
     { id: 'linkedin', icon: <LinkedInIcon />, href: 'www.linkedin.com/in/Siddu B R-p-2247aa374' },
     { id: 'email', icon: <MailOutlineIcon />, href: 'mailto:siddu19112007@gmail.com' },
   ],
@@ -99,17 +99,15 @@ export default function Drawer({
           }}
         >
           <Avatar
+            src={profile.avatarUrl}
+            alt={profile.name}
             sx={{ 
               width: 56, 
               height: 56, 
-              bgcolor: '#42a5f5', 
-              fontWeight: 600,
               border: `2px solid ${theme.palette.divider}`,
               boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)'
             }}
-          >
-            S
-          </Avatar>
+          />
           <Box sx={{ minWidth: 0, flex: 1 }}>
             <Typography variant="subtitle1" noWrap sx={{ fontWeight: 700 }}>
               {profile.name}

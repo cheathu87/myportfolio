@@ -4,7 +4,6 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
-
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -35,20 +34,17 @@ export default function MobileLanding() {
         <Card sx={{ mb: 3, borderRadius: 3, boxShadow: 2 }}>
           <CardContent sx={{ textAlign: 'center', py: 4 }}>
             <Avatar
+              src="/sid.jpg"
+              alt="Siddu B R"
               sx={{ 
                 width: 120, 
                 height: 120, 
                 mx: 'auto',
                 mb: 3,
-                bgcolor: '#42a5f5',
-                fontSize: '3rem',
-                fontWeight: 600,
-                border: '4px solid #1976d2',
+                border: '4px solidrgb(126, 54, 26)',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.15)'
               }}
-            >
-              S
-            </Avatar>
+            />
             <Typography variant="h4" sx={{ fontWeight: 800, color: '#1a237e', mb: 1 }}>
               Siddu B R
             </Typography>
@@ -121,7 +117,7 @@ export default function MobileLanding() {
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3 }}>
               <Button
                 component="a"
-                href="https://github.com/Siddu B R497c' },
+                href="https://github.com/Siddu19112007"
                 target="_blank"
                 variant="outlined"
                 startIcon={<GitHubIcon />}
@@ -135,7 +131,7 @@ export default function MobileLanding() {
               </Button>
               <Button
                 component="a"
-                href="https: www.linkedin.com/in/Siddu B R-p-2247aa374 "
+                href="https: www.linkedin.com/in/Siddu19112007"
                 target="_blank"
                 variant="outlined"
                 startIcon={<LinkedInIcon />}
@@ -173,7 +169,7 @@ export default function MobileLanding() {
             </Typography>
             <Button
               component="a"
-                  href="https://wa.me/6364770595"
+              href="https://wa.me/9880339147"
               target="_blank"
               variant="contained"
               size="large"

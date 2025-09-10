@@ -90,7 +90,7 @@ function App() {
         <Drawer
           onSelect={(id) => scrollToSection(id)}
           activeSection={activeSection}
-          profile={{ name: 'Siddu B R', role: 'Frontend Developer', avatarUrl: '/red.jpeg' }}
+          profile={{ name: 'Siddu B R', role: 'Frontend Developer', avatarUrl: '/sid.jpg' }}
           width={320}
           mobileOpen={mobileOpen}
           onClose={handleDrawerToggle}
