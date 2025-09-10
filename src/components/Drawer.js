@@ -19,6 +19,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function Drawer({
   onSelect,
@@ -45,6 +46,8 @@ export default function Drawer({
   ],
 }) {
   const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const effectiveIsMobile = isMobile || isSmallScreen;
   const firstItemRef = useRef(null);
 
   const handleSelect = (id) => () => {
@@ -60,30 +63,32 @@ export default function Drawer({
 
   useEffect(() => {
     // Focus first item when drawer opens, or on desktop where it acts as a side nav
-    if (mobileOpen || !isMobile) {
+    if (mobileOpen || !effectiveIsMobile) {
       setTimeout(() => {
         if (firstItemRef.current) {
           firstItemRef.current.focus();
         }
       }, 0);
     }
-  }, [mobileOpen, isMobile]);
+  }, [mobileOpen, effectiveIsMobile]);
 
   return (
     <Box sx={{ 
-      width: isMobile ? '100%' : width, 
-      height: '100vh', 
-      borderRight: isMobile ? 0 : 1, 
+      width: effectiveIsMobile ? '100%' : width, 
+      height: '100dvh', 
+      borderRight: effectiveIsMobile ? 0 : 1, 
       borderColor: 'divider', 
       bgcolor: 'background.paper',
       color: 'text.primary',
       position: 'fixed',
       top: 0,
-      left: isMobile ? (mobileOpen ? 0 : '-100%') : (mobileOpen ? 0 : '-100%'),
+      left: effectiveIsMobile ? (mobileOpen ? 0 : '-100%') : 0,
       zIndex: 1200,
       overflow: 'hidden',
       transition: 'left 0.3s ease-in-out',
-      boxShadow: isMobile ? 3 : 0
+      boxShadow: effectiveIsMobile ? 3 : 0,
+      paddingTop: 'env(safe-area-inset-top)',
+      paddingBottom: 'env(safe-area-inset-bottom)'
     }} aria-label="Primary navigation" aria-expanded={mobileOpen}>
       <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
         {/* Header */}
