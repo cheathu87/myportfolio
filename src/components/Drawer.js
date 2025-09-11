@@ -31,9 +31,9 @@ export default function Drawer({
   isMobile = false,
   anchor = 'left',
   profile = {
-    name: 'Siddu B R',
+    name: 'Chetan Sreenatha',
     role: 'Frontend Developer',
-    avatarUrl: '/ddi.jpg',
+    avatarUrl: '/6361417492',
   },
   links = [
     { id: 'home', label: 'Home', icon: <HomeIcon /> },
@@ -42,9 +42,9 @@ export default function Drawer({
     { id: 'contact', label: 'Contact', icon: <ContactSupportIcon /> },
   ],
   socials = [
-    { id: 'github', icon: <GitHubIcon />, href: 'https://github.com/Siddu-119/my-portfolio' },
+    { id: 'github', icon: <GitHubIcon />, href: 'https://github.com/Chetan Sreenatha-119/my-portfolio' },
     { id: 'instagram', icon: <InstagramIcon />, href: 'https://instagram.com/your_instagram_username' },
-    { id: 'email', icon: <MailOutlineIcon />, href: 'mailto:siddu19112007@gmail.com' },
+    { id: 'email', icon: <MailOutlineIcon />, href: 'mailto:chetansreenath@gmail.com' },
   ],
 }) {
   const theme = useTheme();
@@ -265,19 +265,22 @@ export default function Drawer({
             <Box sx={{
               position: 'fixed',
               left: 0,
+              right: 0,
               bottom: 0,
-              width: '100vw',
-              bgcolor: 'background.paper',
+              width: '100%',
+              maxWidth: '100vw',
+              bgcolor: '#e3f2fd',
               borderTop: 1,
               borderColor: 'divider',
               boxShadow: 8,
-              zIndex: 2000,
+              zIndex: 3000,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              py: 2
+              py: 2,
+              px: 2,
             }}>
-              <Box sx={{ display: 'flex', gap: 3, mb: 1 }}>
+              <Box sx={{ display: 'flex', gap: 2, mb: 1, justifyContent: 'center', width: '100%' }}>
                 {socials.map((s) => (
                   <IconButton
                     key={s.id}

@@ -10,7 +10,7 @@ import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 
 export default function About({
-  name = 'Siddu B R',
+  name = 'Chetan Sreenatha',
   role = 'Frontend Developer',
   summary = `As a passionate Front-End Developer with a solid foundation in Computer Science, I bring hands-on experience in building responsive, user-centric web applications using React, HTML, CSS, and JavaScript. I specialize in crafting intuitive interfaces and deploying polished projects via GitHub, with recent work including a functional website clone and customized UI components using Material UI.
 My approach is rooted in practical problem-solving and attention to detail, ensuring that every element contributes to a seamless user experience. I'm deeply curious about emerging technologies like AI and cloud computing, and I thrive in collaborative environments where I can contribute innovative solutions while continuously learning from experienced teams.
@@ -167,15 +167,15 @@ Driven by a desire to create meaningful digital experiences, I'm eager to join d
                     <strong>10th</strong>
                   </Box>
                   <Box component="td">
-                  Shubhodaya English School<br />
+                  Ananya english medium school<br />
                     <Typography variant="caption" color="text.secondary">
-                    vinayaka nagar Gubbi Tumkur karnataka Pincode 572223
+                    ananya residential public school, WHM3+5GJ, Gopal Gowda Extension, Shivamogga, Karnataka 577205
                     </Typography>
                   </Box>
                   <Box component="td">2023</Box>
                   <Box component="td">
                     <Chip 
-                      label="86.2%" 
+                      label="79.9%" 
                       color="primary" 
                       variant="outlined"
                       size="small"

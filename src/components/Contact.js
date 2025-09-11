@@ -76,7 +76,7 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
         email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to: 'siddu19112007@gmail.com'
+        to: '@gmail.com'
       };
       
       // Send to a working email service
@@ -110,7 +110,7 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
       
       setSnackbar({
         open: true,
-        message: 'Failed to send message. Please try again later or contact me directly at siddu19112007@gmail.com',
+        message: 'Failed to send message. Please try again later or contact me directly at chetansreenath@gmail.com',
         severity: 'error'
       });
     } finally {
@@ -160,7 +160,7 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                         Location:
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                      Benachigere , Gubbi Taluk,Tumkur , Karnataka,  Pincode 572223
+                      vinobha nagara 1st stage 6th cross shivamogga-577201
                       </Typography>
                     </Box>
                   </Box>
@@ -188,7 +188,7 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                           sx={{ p: 0, minWidth: 'auto', textTransform: 'none' }}
                           onClick={() => window.open('https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox', '_blank', 'noopener,noreferrer')}
                         >
-                          siddu19112007@gmail.com
+                          chetansreenath@gmail.com
                         </Button>
                       </Typography>
                     </Box>
@@ -212,7 +212,7 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                         Call:
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        +91 6364770595
+                        +91 6361417492
                       </Typography>
                     </Box>
                   </Box>
@@ -238,7 +238,7 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                         <Button 
                           variant="text" 
                           sx={{ p: 0, minWidth: 'auto', textTransform: 'none' }}
-                          onClick={() => window.open('https://wa.me/6364770595', '_blank')}     
+                          onClick={() => window.open('https://wa.me/6361417492', '_blank')}     
                         >
                           click here
                         </Button>
@@ -262,8 +262,8 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                       allowFullScreen=""
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="Benchagere, Gubbi Taluk, Tumkur, Karnataka"
-                      src={`https://www.google.com/maps?q=Benchagere,+Gubbi+Taluk,+Tumkur,+Karnataka&z=14&t=${mapType}&output=embed`}
+                      title="vinobha nagara 1st stage 6th cross shivamogga-577201"
+                      src={`https://www.google.com/maps?q=vinobha+nagara+1st+stage+6th+cross+shivamogga-577201&z=14&t=${mapType}&output=embed`}
                     />
                   </Box>
                   <Box sx={{ p: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
@@ -275,7 +275,7 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                     <Button
                       size="small"
                       variant="text"
-                      onClick={() => window.open('https://www.google.com/maps?q=Benchagere,+Gubbi+Taluk,+Tumkur,+Karnataka', '_blank', 'noopener,noreferrer')}
+                      onClick={() => window.open('https://www.google.com/maps?q=vinobha+nagara+1st+stage+6th+cross+shivamogga-577201', '_blank', 'noopener,noreferrer')}
                     >
                       Open in Google Maps
                     </Button>

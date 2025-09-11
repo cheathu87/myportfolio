@@ -34,8 +34,8 @@ export default function MobileLanding() {
         <Card sx={{ mb: 3, borderRadius: 3, boxShadow: 2 }}>
           <CardContent sx={{ textAlign: 'center', py: 4 }}>
             <Avatar
-              src="/ddi.jpg"
-              alt="Siddu B R"
+              src="/image2.jpg"
+              alt="Chetan Sreenatha"
               imgProps={{ loading: 'eager', decoding: 'async' }}
               sx={{ 
                 width: 180, 
@@ -48,7 +48,7 @@ export default function MobileLanding() {
               }}
             />
             <Typography variant="h4" sx={{ fontWeight: 800, color: '#1a237e', mb: 1 }}>
-              Siddu B R
+              Chetan Sreenatha
             </Typography>
             <Typography variant="h6" color="text.secondary" sx={{ mb: 2 }}>
               Frontend Developer
@@ -103,7 +103,7 @@ export default function MobileLanding() {
               <CardContent sx={{ textAlign: 'center', py: 2 }}>
                 <PhoneIcon sx={{ fontSize: 40, color: '#1a237e', mb: 1 }} />
                 <Typography variant="body2" color="text.secondary">
-                  +91 6364770595
+                  +91 6361417492
                 </Typography>
               </CardContent>
             </Card>
@@ -119,7 +119,7 @@ export default function MobileLanding() {
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3 }}>
               <Button
                 component="a"
-                href="https://github.com/Siddu19112007"
+                href="https://github.com/Chetan Sreenatha19112007"
                 target="_blank"
                 variant="outlined"
                 startIcon={<GitHubIcon />}
@@ -133,7 +133,7 @@ export default function MobileLanding() {
               </Button>
               <Button
                 component="a"
-                href="https: www.linkedin.com/in/Siddu19112007"
+                href="https: www.linkedin.com/in/Chetan Sreenatha19112007"
                 target="_blank"
                 variant="outlined"
                 startIcon={<LinkedInIcon />}
@@ -147,7 +147,7 @@ export default function MobileLanding() {
               </Button>
               <Button
                 component="a"
-                href="mailto:siddu19112007@gmail.com"
+                href="mailto:chetansreenath@gmail.com"
                 variant="outlined"
                 startIcon={<MailOutlineIcon />}
                 sx={{ 

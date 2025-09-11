@@ -90,7 +90,7 @@ function App() {
         <Drawer
           onSelect={(id) => scrollToSection(id)}
           activeSection={activeSection}
-          profile={{ name: 'Siddu B R', role: 'Frontend Developer', avatarUrl: '/ddi.jpg' }}
+          profile={{ name: 'Chetan Sreenatha', role: 'Frontend Developer', avatarUrl: '/image2.jpg' }}
           width={320}
           mobileOpen={mobileOpen}
           onClose={handleDrawerToggle}
@@ -112,7 +112,7 @@ function App() {
 
           <div data-section="about">
             <About
-              name="Siddu B R"
+              name="Chetan Sreenatha"
               role="Frontend Developer"
               onContact={() => scrollToSection('contact')}
               onDownloadResume={() => console.log('Download resume clicked')}
@@ -126,9 +126,9 @@ function App() {
 
           <div data-section="contact">
             <Contact
-              onPhone={() => (window.location.href = 'tel:+91 6364770595')}
-              onEmail={() => (window.location.href = 'mailto:siddu19112007@gmail.com')}
-              onLinkedIn={() => window.open('https://www.linkedin.com/in/Siddu B R-p-2247aa374', '_blank', 'noopener,noreferrer')}
+              onPhone={() => (window.location.href = 'tel:+91 6361417492')}
+              onEmail={() => (window.location.href = 'mailto:chetansreenath@gmail.com')}
+              onLinkedIn={() => window.open('https://www.linkedin.com/in/Chetan Sreenatha-p-2247aa374', '_blank', 'noopener,noreferrer')}
             />
           </div>
         </div>
@@ -142,7 +142,7 @@ export default App;
 <a href="/sid.jpg" target="_blank" rel="noopener noreferrer">
   <img
     src="/sid.jpg"
-    alt="Siddu B R"
+    alt=""
     className="avatar"
     style={{ width: 56, height: 56, borderRadius: '50%' }}
   />
