@@ -126,8 +126,8 @@ function App() {
 
           <div data-section="contact">
             <Contact
-              onPhone={() => (window.location.href = 'tel:+91 9880339147')}
-              onEmail={() => (window.location.href = 'mailto:shreyasbb20@gmail.com')}
+              onPhone={() => (window.location.href = 'tel:+91 6364770595')}
+              onEmail={() => (window.location.href = 'mailto:siddu19112007@gmail.com')}
               onLinkedIn={() => window.open('https://www.linkedin.com/in/Siddu B R-p-2247aa374', '_blank', 'noopener,noreferrer')}
             />
           </div>

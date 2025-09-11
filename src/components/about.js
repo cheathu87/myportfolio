@@ -89,32 +89,36 @@ Driven by a desire to create meaningful digital experiences, I'm eager to join d
           <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>
             Educational Qualifications
           </Typography>
-          <Box sx={{ 
-            mt: 3, 
-            border: 1, 
-            borderColor: 'divider', 
+          <Box sx={{
+            mt: 3,
+            border: 1,
+            borderColor: 'divider',
             borderRadius: 2,
             bgcolor: 'background.paper',
-            overflow: 'hidden',
-            '&:hover': { boxShadow: 2, transition: 'box-shadow 0.3s ease' }
+            overflow: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            maxWidth: '100vw',
+            '&:hover': { boxShadow: 2, transition: 'box-shadow 0.3s ease' },
           }}>
             <Box
               component="table"
               sx={{
+                minWidth: 400,
                 width: '100%',
                 borderCollapse: 'collapse',
                 '& th, & td': {
                   border: '1px solid',
                   borderColor: 'divider',
-                  padding: 2,
+                  padding: { xs: '6px', sm: 2 },
                   textAlign: 'left',
-                  verticalAlign: 'top'
+                  verticalAlign: 'top',
+                  fontSize: { xs: '0.85rem', sm: '1rem' },
                 },
                 '& th': {
                   bgcolor: 'primary.main',
                   color: 'white',
                   fontWeight: 700,
-                  fontSize: '0.875rem'
+                  fontSize: { xs: '0.8rem', sm: '0.875rem' },
                 },
                 '& tr:nth-of-type(even)': {
                   bgcolor: 'action.hover'

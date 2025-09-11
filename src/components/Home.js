@@ -1,70 +1,64 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 export default function Home() {
-  const [currentRole, setCurrentRole] = useState(0);
-  const [animatedText, setAnimatedText] = useState('');
-  const [welcomeText, setWelcomeText] = useState('');
-  const [isAnimating, setIsAnimating] = useState(true);
-  const [isWelcomeAnimating, setIsWelcomeAnimating] = useState(true);
-  const roles = ['I am Frontend Developer', 'I am Designer'];
-  const fullText = "I am Siddu B R";
-  const welcomeFullText = "Welcome";
-  const textRef = useRef(null);
-  
-  // Role switcher effect
+  // Typing animation for name and role
+  const name = 'I AM ,SIDDU B R';
+  const roles = ['I am Designer', 'I am Frontend Developer'];
+  const [typedName, setTypedName] = useState('');
+  const [showRole, setShowRole] = useState(false);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [typedRole, setTypedRole] = useState('');
+  const [typingRole, setTypingRole] = useState(false);
+
+  // Typing animation for name
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRole((prevRole) => (prevRole + 1) % roles.length);
-    }, 2000);
-    
-    return () => clearInterval(interval);
-  }, []);
-
-
-
-  // Letter-by-letter animation effect for name
-  useEffect(() => {
-    if (!isAnimating) return;
-    
-    let currentIndex = 0;
-    const animationSpeed = 100; // milliseconds per character
-    
-    const animateText = () => {
-      if (currentIndex <= fullText.length) {
-        setAnimatedText(fullText.slice(0, currentIndex));
-        currentIndex++;
-        setTimeout(animateText, animationSpeed);
-      } else {
-        setIsAnimating(false);
+    let i = 0;
+    setTypedName('');
+    setShowRole(false);
+    setTypedRole('');
+    setTypingRole(false);
+    const timer = setInterval(() => {
+      setTypedName(name.slice(0, i + 1));
+      i++;
+      if (i === name.length) {
+        clearInterval(timer);
+        setTimeout(() => setShowRole(true), 400);
       }
-    };
-    
-    animateText();
-  }, [isAnimating, fullText]);
+    }, 70);
+    return () => clearInterval(timer);
+    // eslint-disable-next-line
+  }, [roleIndex]);
 
-  // Letter-by-letter animation effect for welcome
+  // Typing animation for role
   useEffect(() => {
-    if (!isWelcomeAnimating) return;
-    
-    let currentIndex = 0;
-    const animationSpeed = 80; // slightly faster for welcome
-    
-    const animateWelcome = () => {
-      if (currentIndex <= welcomeFullText.length) {
-        setWelcomeText(welcomeFullText.slice(0, currentIndex));
-        currentIndex++;
-        setTimeout(animateWelcome, animationSpeed);
-      } else {
-        setIsWelcomeAnimating(false);
-      }
+    if (!showRole) return;
+    let i = 0;
+    setTypedRole('');
+    setTypingRole(true);
+    const currentRole = roles[roleIndex];
+    // Clear the previous role before typing the next
+    let clearTimeoutId = setTimeout(() => {
+      const timer = setInterval(() => {
+        setTypedRole(currentRole.slice(0, i + 1));
+        i++;
+        if (i === currentRole.length) {
+          clearInterval(timer);
+          setTypingRole(false);
+          setTimeout(() => {
+            setRoleIndex((prev) => (prev + 1) % roles.length);
+          }, 1200);
+        }
+      }, 60);
+    }, typedRole.length > 0 ? 400 : 0); // If not first, pause before typing next
+    setTypedRole('');
+    return () => {
+      clearTimeout(clearTimeoutId);
     };
-    
-    animateWelcome();
-  }, [isWelcomeAnimating, welcomeFullText]);
+  }, [showRole, roleIndex]);
 
   return (
     <Box 
@@ -96,22 +90,6 @@ export default function Home() {
           backgroundSize: 'cover',
           imageRendering: 'high-quality',
         },
-        '@keyframes fadeInOut': {
-          '0%, 100%': {
-            opacity: 1,
-          },
-          '50%': {
-            opacity: 0.3,
-          },
-        },
-        '@keyframes blink': {
-          '0%, 50%': {
-            opacity: 1,
-          },
-          '51%, 100%': {
-            opacity: 0,
-          },
-        },
       }}
     >
       {/* Dark overlay for better text readability */}
@@ -125,87 +103,94 @@ export default function Home() {
           bgcolor: 'rgba(0, 0, 0, 0.3)',
         }}
       />
-      
       <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1, px: { xs: 2, sm: 3 } }}>
         <Typography 
-          variant="h4" 
+          variant="h5" 
           sx={{ 
             fontWeight: 800, 
             mb: 2,
             color: 'white',
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-            minHeight: { xs: '2rem', sm: '2.5rem' },
+            minHeight: { xs: '1.2rem', sm: '1.5rem' },
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             fontFamily: 'Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
             letterSpacing: '0.1em',
-            fontSize: { xs: '1.5rem', sm: '2.125rem' },
+            fontSize: { xs: '1.1rem', sm: '1.5rem' },
             fontStyle: 'italic',
             textTransform: 'uppercase'
           }}
         >
-          <Box
-            component="span"
-            sx={{
-              position: 'relative'
-            }}
-          >
-            {welcomeText}
-          </Box>
+          WELCOME
         </Typography>
         <Typography 
-          variant="h3" 
+          variant="h4" 
           sx={{ 
             fontWeight: 800, 
             mt: 1,
             color: 'white',
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-            minHeight: { xs: '2.5rem', sm: '3.5rem' },
+            minHeight: { xs: '1.8rem', sm: '2.2rem' },
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             fontFamily: 'Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
             letterSpacing: '0.1em',
-            fontSize: { xs: '1.75rem', sm: '3rem' },
+            fontSize: { xs: '1.5rem', sm: '2.1rem' },
             fontStyle: 'italic',
-            textTransform: 'uppercase'
+            textTransform: 'uppercase',
+            whiteSpace: 'pre',
           }}
         >
-          <Box
-            component="span"
+          {typedName}
+          <Box component="span" sx={{
+            display: !showRole ? 'inline-block' : 'none',
+            width: '1ch',
+            ml: 0.5,
+            bgcolor: 'white',
+            height: { xs: '1.5rem', sm: '2.5rem' },
+            animation: 'blink 1s steps(1) infinite',
+          }} />
+        </Typography>
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: { xs: '1.2rem', sm: '1.5rem' },
+          mt: 1,
+        }}>
+          <Typography
+            variant="h5"
             sx={{
-              position: 'relative'
+              fontWeight: 700,
+              color: 'white',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+              fontSize: { xs: '1.1rem', sm: '1.3rem' },
+              fontStyle: 'italic',
+              minHeight: { xs: '1.2rem', sm: '1.5rem' },
+              letterSpacing: '0.02em',
+              whiteSpace: 'pre',
+              width: 'fit-content',
             }}
           >
-            {animatedText}
-          </Box>
-        </Typography>
-        <Typography 
-          variant="h3" 
-          sx={{ 
-            fontWeight: 800, 
-            mt: 1,
-            color: 'white',
-            textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-            minHeight: { xs: '2.5rem', sm: '3.5rem' },
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: { xs: '1.5rem', sm: '2.5rem' }
-          }}
-        >
-          <Box
-            component="span"
-            sx={{
-              opacity: 1,
-              transition: 'opacity 0.5s ease-in-out',
-              animation: 'fadeInOut 2s ease-in-out infinite'
-            }}
-          >
-            {roles[currentRole]}
-          </Box>
-        </Typography>
+            {typedRole}
+            <Box component="span" sx={{
+              display: typingRole ? 'inline-block' : 'none',
+              width: '1ch',
+              ml: 0.5,
+              bgcolor: 'white',
+              height: { xs: '1.1rem', sm: '1.3rem' },
+              animation: 'blink 1s steps(1) infinite',
+            }} />
+          </Typography>
+        </Box>
+        <style>{`
+          @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+          }
+        `}</style>
         <Typography 
           variant="body1" 
           sx={{ 
@@ -222,4 +207,5 @@ export default function Home() {
     </Box>
   );
 }
+
 
