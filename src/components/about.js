@@ -67,7 +67,7 @@ Driven by a desire to create meaningful digital experiences, I'm eager to join d
                 variant="outlined" 
                 color="primary" 
                 component="a"
-                href="/my%20resume.pdf"
+                href="/chetans%20resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
