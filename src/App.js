@@ -128,7 +128,7 @@ function App() {
             <Contact
               onPhone={() => (window.location.href = 'tel:+91 6361417492')}
               onEmail={() => (window.location.href = 'mailto:chetansreenath@gmail.com')}
-              onLinkedIn={() => window.open('https://www.linkedin.com/in/Chetan Sreenatha-p-2247aa374', '_blank', 'noopener,noreferrer')}
+              onLinkedIn={() => window.open('https://www.linkedin.com/in/chetan-sreenatha-89b454385', '_blank', 'noopener,noreferrer')}
             />
           </div>
         </div>
